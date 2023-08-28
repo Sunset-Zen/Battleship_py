@@ -145,6 +145,9 @@ def board_display(x):
         print()
     # print('')
 
+def reroll():
+    print ('reroll')
+
 # lose check / board check
 
 print('=================================================='*2)
@@ -219,22 +222,34 @@ if single_player:
             if ship_counter > 4:
                 break
 
+            # ( CPU Location )
+            cpu_row = random.randint(0, 9)
+            cpu_column = random.randint(0, 9)
+
+            if cpu_board[cpu_row].count(1) >= 1:
+                cpu_row = random.randint(0, 9)
+                cpu_column = random.randint(0, 9)
+            cpu_location = [letters[cpu_row], str(cpu_column)]
+            cpu_board[cpu_row][cpu_column] = 1
+            cpu_board_display[cpu_row][cpu_column] = game_symbols[2]
+            cpu_ship_coordinates[ship_counter].append(cpu_location)
+
             # ( CPU Direction )
             direct_arr = ['horizontal', 'vertical']
             direction = direct_arr[random.randint(0, 1)]
             if direction == 'horizontal':
-                print("\ncpu horizontal alignment")
+                print("\ncpu horizontal alignment at: " + str(cpu_location))
             if direction == 'vertical':
-                print('\ncpu vertical alignment')
+                print('\ncpu vertical alignment at: ' + str(cpu_location))
 
             print('\nPlayer_1 Enter Coordinates for [' + ships[ship_counter] + ']:')
 
             temp_count = 0
-            cpu_tcount = 0
+            cpu_tcount = 1
             #  ( Player Turn  && CPU Turn)
             while temp_count < ships_spaces[ship_counter]:
                 temp_arr = []
-                ctemp_arr = []
+                # ctemp_arr = []
 
                 # ( Player Coordinates )
                 resp = input(str(temp_count)+ ': ')
@@ -248,27 +263,56 @@ if single_player:
                 # ( Update Coordinates )
                 p1_ship_coordinates[ship_counter].append(temp_arr)
 
+                # ( Plot Remaining CPU Coordinates )
+                if cpu_tcount < ships_spaces[ship_counter]:
+                    if direction == 'horizontal' and cpu_column <= 5:
+                        cpu_board[cpu_row][cpu_column + cpu_tcount] = 1
+                        cpu_board_display[cpu_row][cpu_column + cpu_tcount] = game_symbols[2]
+                        cpu_ship_coordinates[ship_counter].append([letters[cpu_row], cpu_column + cpu_tcount])
+                    elif direction == 'horizontal' and cpu_column >= 5:
+                        cpu_board[cpu_row][cpu_column - cpu_tcount] = 1
+                        cpu_board_display[cpu_row][cpu_column - cpu_tcount] = game_symbols[2]
+                        cpu_ship_coordinates[ship_counter].append([letters[cpu_row], cpu_column - cpu_tcount])
+                    elif direction == 'vertical' and cpu_row <= 5:
+                        cpu_board[cpu_row + cpu_tcount][cpu_column] = 1
+                        cpu_board_display[cpu_row + cpu_tcount][cpu_column] = game_symbols[2]
+                        cpu_ship_coordinates[ship_counter].append([letters[cpu_row + cpu_tcount], cpu_column])
+                    elif direction == 'vertical' and cpu_row >= 5:
+                        cpu_board[cpu_row - cpu_tcount][cpu_column] = 1
+                        cpu_board_display[cpu_row - cpu_tcount][cpu_column] = game_symbols[2]
+                        cpu_ship_coordinates[ship_counter].append([letters[cpu_row - cpu_tcount], cpu_column])
+                    cpu_tcount += 1
                 # ( CPU Coordinates )
-                a = random.randint(0, 9)
-                b = random.randint(0, 9)
-                if temp_count >= 1 and direction == 'horizontal':
-                    a = letters.index(cpu_ship_coordinates[0][0][0])
-                    b = random.randint(0, 9)
-                if temp_count >= 1 and direction == 'vertical':
-                    a = random.randint(0, 9)
-                    b = cpu_ship_coordinates[0][0][1]
+                # a = random.randint(0, 9)
+                # b = random.randint(0, 9)
+                # if temp_count >= 1 and direction == 'horizontal':
+                #     if cpu_board[a][b] == 1:
+                #         # ( re-roll )
+                #         a = cpu_ship_coordinates[0][0][0]
+                #         b = random.randint(0, 9)
+                #         print('CPU rerolled')
+                #     else:
+                #         a = letters.index(cpu_ship_coordinates[0][0][0])
+                #         b = random.randint(0, 9)
+                # if temp_count >= 1 and direction == 'vertical':
+                #     if cpu_board[a][b] == 1:
+                #         # ( re-roll )
+                #         a = random.randint(0, 9)
+                #         b = cpu_ship_coordinates[0][0][1]
+                #         print('CPU rerolled')
+                #     else:
+                #         a = random.randint(0, 9)
+                #         b = cpu_ship_coordinates[0][0][1]
 
-                ctemp_arr.append(letters[a])
-                ctemp_arr.append(b)
+                # ctemp_arr.append(letters[a])
+                # ctemp_arr.append(b)
 
                 # ( Update cpu_board_display )
-                cpu_board_display[a][b] = game_symbols[2]
-                cpu_board[a][b] = 1
+                # cpu_board_display[a][b] = game_symbols[2]
+                # cpu_board[a][b] = 1
 
                 # ( Update Coordinates )
-                cpu_ship_coordinates[ship_counter].append(ctemp_arr)
-
-                cpu_tcount += 1
+                # cpu_ship_coordinates[ship_counter].append(ctemp_arr)
                 temp_count += 1
 
             # End / Update
