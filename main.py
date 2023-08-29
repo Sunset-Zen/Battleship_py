@@ -9,65 +9,67 @@ import random
 multi_player = False
 single_player = False
 p1_board, p2_board, cpu_board = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                                                        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+                                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                                                   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                                                   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                                                   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                                                   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                                                   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                                                   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                                                   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                                                   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                                                   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], [
+                                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
 p1_board_display, p2_board_display, cpu_board_display = [[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']], [[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']], [[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-                                                        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']]
+                                                         [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                         [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                         [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                         [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                         [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                         [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                         [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                         [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                         [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']], [
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']], [
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                                            [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']]
 player1_f, player2_f, cpu_f = False, False, False
 player_1_ships, player_2_ships, player_3_ships = 5, 5, 5
 game_start = True
-
 
 game_symbols = ['X', '-', '#']
 turn_array = ['Heads', 'Tails']
@@ -80,12 +82,12 @@ p1_ship_coordinates = [[], [], [], [], []]
 p2_ship_coordinates = [[], [], [], [], []]
 cpu_ship_coordinates = [[], [], [], [], []]
 
-
 p1_ships = 5
 cpu_ships = 5
 
+
 # ( Game Functions )
-# who goes first function ( Heads or Tails )
+# ( Who goes first function ( Heads or Tails ) )
 def first_play(player1_f, player2_f, cpu_f):
     if not multi_player:
         user_guess = input('\n[Player 1] Pick / Type Heads or Tails: \t')
@@ -110,7 +112,6 @@ def first_play(player1_f, player2_f, cpu_f):
         user_guess2 = input('\n[Player 2] Pick / Type Heads or Tails: \t')
         if user_guess == turn_array[coin_flip]:
             player1_f = True
-
             # Debug
             print('\n( player1_f ): ' + str(player1_f), end='\n')
             print('( player2_f ): ' + str(player2_f), end='\n')
@@ -118,7 +119,6 @@ def first_play(player1_f, player2_f, cpu_f):
             print('\nPlayer 1 Goes First !!')
         else:
             player2_f = True
-
             # Debug
             print('\n( player1_f ): ' + str(player1_f), end='\n')
             print('( player2_f ): ' + str(player2_f), end='\n')
@@ -126,7 +126,8 @@ def first_play(player1_f, player2_f, cpu_f):
             print('\nPlayer 2 Goes First !!\n')
     return [player1_f, player2_f, cpu_f]
 
-# board display (pass in the board)
+
+# ( Board Display ( Pass in the Board ) )
 def board_display(x):
     # Iterate through x and display 2D list contents
     tracker = 0
@@ -145,19 +146,20 @@ def board_display(x):
         print()
     # print('')
 
+
+# ( Lose Check / Board Check )
 def reroll():
-    print ('reroll')
+    print('reroll')
 
-# lose check / board check
 
-print('=================================================='*2)
+print('==================================================' * 2)
 print('Welcome To BattleShip')
 print('Developed by : Otis Ray Jackson IV')
 
 # ( Display Ruleset )
-print('--------------------------------------------------'*2)
+print('--------------------------------------------------' * 2)
 print('( Basic Ruleset of BattleShip )')
-print('--------------------------------------------------'*2)
+print('--------------------------------------------------' * 2)
 print('100% Indexed && Turn Based application.\t\t\t\t\t\t ** ( Indexes start from A-J & 0-9 ) **')
 print('Select Box Example : => \t\t\t\t\t\t\t\t\t A 9\t [Row, Column]')
 print('Hit Box Example : => \t\t\t\t\t\t\t\t\t\t X\t\t at [Row, Column]')
@@ -198,7 +200,6 @@ if multi_player:
 if single_player:
     # ( Determine Who Goes First )
     first_list = first_play(player1_f, player2_f, cpu_f)
-
     # ( Display Board )
     print('--------------------------------------------------')
     print('( Board Display )')
@@ -206,21 +207,15 @@ if single_player:
     board_display(p1_board_display)
     print('--------------------------------------------------')
 
-    # Debug
-    # print('\n( player1_f ): ' + str(first_list[0]))
-    # print('( player2_f ): ' + str(first_list[1]))
-    # print('( cpu_f ): ' + str(first_list[2]))
-
-    # ( Game Start )
-    # ->    Place Coordinates
-    ship_counter = 0                # for indexes of ships = [Aircraft Carrier, ....]
-    ship_space_counter = 0          # for indexes of ships_spaces = [5, 4, 3, 3, 2]
     while game_start:
-        # ( If Conditions )
-        # ->    Place Coordinates ( Player_1 && Player_2 )
-        while ship_counter < 5:
-            if ship_counter > 4:
-                break
+        # ( Game Start )
+        ship_counter = 0  # for indexes of ships = [Aircraft Carrier, ....]
+        ship_space_counter = 0  # for indexes of ships_spaces = [5, 4, 3, 3, 2]
+        # ( Place Coordinates ( Player_1 && Player_2 ) )
+        for i in range(5):
+            # ( CPU Direction )
+            direct_arr = ['horizontal', 'vertical']
+            direction = direct_arr[random.randint(0, 1)]
 
             # ( CPU Location )
             cpu_row = random.randint(0, 9)
@@ -229,30 +224,48 @@ if single_player:
             if cpu_board[cpu_row].count(1) >= 1:
                 cpu_row = random.randint(0, 9)
                 cpu_column = random.randint(0, 9)
+            if direction == 'vertical' and cpu_row >= 5:
+                if cpu_board[cpu_row - 1][cpu_column] == 1 or cpu_board[cpu_row - 2][cpu_column] == 1:
+                    # ( reroll )
+                    cpu_row = random.randint(0, 9)
+                    cpu_column = random.randint(0, 9)
+            if direction == 'vertical' and cpu_row < 5:
+                if cpu_board[cpu_row + 1][cpu_column] == 1 or cpu_board[cpu_row + 2][cpu_column] == 1:
+                    # ( reroll )
+                    cpu_row = random.randint(0, 9)
+                    cpu_column = random.randint(0, 9)
+            if direction == 'horizontal' and cpu_row >= 5:
+                if cpu_board[cpu_row][cpu_column - 1] == 1 or cpu_board[cpu_row][cpu_column - 2] == 1:
+                    # ( reroll )
+                    cpu_row = random.randint(0, 9)
+                    cpu_column = random.randint(0, 9)
+            if direction == 'horizontal' and cpu_row < 5:
+                if cpu_board[cpu_row][cpu_column + 1] == 1:
+                    # ( reroll )
+                    cpu_row = random.randint(0, 9)
+                    cpu_column = random.randint(0, 9)
+
             cpu_location = [letters[cpu_row], str(cpu_column)]
             cpu_board[cpu_row][cpu_column] = 1
             cpu_board_display[cpu_row][cpu_column] = game_symbols[2]
             cpu_ship_coordinates[ship_counter].append(cpu_location)
 
-            # ( CPU Direction )
-            direct_arr = ['horizontal', 'vertical']
-            direction = direct_arr[random.randint(0, 1)]
             if direction == 'horizontal':
                 print("\ncpu horizontal alignment at: " + str(cpu_location))
             if direction == 'vertical':
                 print('\ncpu vertical alignment at: ' + str(cpu_location))
-
             print('\nPlayer_1 Enter Coordinates for [' + ships[ship_counter] + ']:')
 
             temp_count = 0
             cpu_tcount = 1
-            #  ( Player Turn  && CPU Turn)
-            while temp_count < ships_spaces[ship_counter]:
+
+            #  ( Player Turn  && CPU Turn )
+            for j in range(ships_spaces[ship_counter]):
+                # while temp_count < ships_spaces[ship_counter]:
                 temp_arr = []
-                # ctemp_arr = []
 
                 # ( Player Coordinates )
-                resp = input(str(temp_count)+ ': ')
+                resp = input(str(temp_count) + ': ')
                 temp_arr.append(resp[0].upper())
                 temp_arr.append(resp[2])
 
@@ -270,64 +283,95 @@ if single_player:
                         cpu_board_display[cpu_row][cpu_column + cpu_tcount] = game_symbols[2]
                         cpu_ship_coordinates[ship_counter].append([letters[cpu_row], cpu_column + cpu_tcount])
                     elif direction == 'horizontal' and cpu_column >= 5:
+                        # ( Overlap Check )
                         cpu_board[cpu_row][cpu_column - cpu_tcount] = 1
                         cpu_board_display[cpu_row][cpu_column - cpu_tcount] = game_symbols[2]
                         cpu_ship_coordinates[ship_counter].append([letters[cpu_row], cpu_column - cpu_tcount])
                     elif direction == 'vertical' and cpu_row <= 5:
+                        # ( Overlap Check )
                         cpu_board[cpu_row + cpu_tcount][cpu_column] = 1
                         cpu_board_display[cpu_row + cpu_tcount][cpu_column] = game_symbols[2]
                         cpu_ship_coordinates[ship_counter].append([letters[cpu_row + cpu_tcount], cpu_column])
                     elif direction == 'vertical' and cpu_row >= 5:
+                        # ( Overlap Check )
                         cpu_board[cpu_row - cpu_tcount][cpu_column] = 1
                         cpu_board_display[cpu_row - cpu_tcount][cpu_column] = game_symbols[2]
                         cpu_ship_coordinates[ship_counter].append([letters[cpu_row - cpu_tcount], cpu_column])
                     cpu_tcount += 1
-                # ( CPU Coordinates )
-                # a = random.randint(0, 9)
-                # b = random.randint(0, 9)
-                # if temp_count >= 1 and direction == 'horizontal':
-                #     if cpu_board[a][b] == 1:
-                #         # ( re-roll )
-                #         a = cpu_ship_coordinates[0][0][0]
-                #         b = random.randint(0, 9)
-                #         print('CPU rerolled')
-                #     else:
-                #         a = letters.index(cpu_ship_coordinates[0][0][0])
-                #         b = random.randint(0, 9)
-                # if temp_count >= 1 and direction == 'vertical':
-                #     if cpu_board[a][b] == 1:
-                #         # ( re-roll )
-                #         a = random.randint(0, 9)
-                #         b = cpu_ship_coordinates[0][0][1]
-                #         print('CPU rerolled')
-                #     else:
-                #         a = random.randint(0, 9)
-                #         b = cpu_ship_coordinates[0][0][1]
 
-                # ctemp_arr.append(letters[a])
-                # ctemp_arr.append(b)
-
-                # ( Update cpu_board_display )
-                # cpu_board_display[a][b] = game_symbols[2]
-                # cpu_board[a][b] = 1
-
-                # ( Update Coordinates )
-                # cpu_ship_coordinates[ship_counter].append(ctemp_arr)
-                temp_count += 1
-
-            # End / Update
+            # ( End / Update Ship Location Placement )
             ship_space_counter += 1
             ship_counter += 1
             print('')
+            print('PLAYER BOARD')
             board_display(p1_board_display)
             print('\n')
+            print('CPU BOARD')
             board_display(cpu_board_display)
             print('\n')
-            print(p1_ship_coordinates)
-            print(cpu_ship_coordinates)
+
+        # ( Coordinate Warfare Begins )
+        print('--------------------------------------------------')
+        print('!!!! WAR BEGINS !!!!')
+        print('--------------------------------------------------')
+
+        # ( If Player Goes First )
+        if first_list[0]:
+            print('P1 Ship Coordinates:\t' + str(p1_ship_coordinates))
+            print('CPU Ship Coordinates:\t' + str(cpu_ship_coordinates))
+            while player_1_ships > 0 or cpu_ships > 0:
+                # ( Player Enter Guess )
+                player_input = input('\nPlayer_1 Enter Strike Coordinates:\t')
+                pr = letters.index(player_input[0])
+                pc = player_input[2]
+                player_guess = [pr, pc]
+
+                # ( Check Board )
+                if cpu_board[player_guess[0]][int(player_guess[1])] == 1:
+                    print('( CPU: HIT !!!! )')
+                else:
+                    print('( CPU: Miss !!!! )')
+
+                # ( Generate CPU Guess )
+                cpu_rowg = random.randint(0, 9)
+                cpu_colg = random.randint(0, 9)
+                cpu_guess = [letters[cpu_rowg], cpu_colg]
+                print('\nCPU Entered Strike Coordinates: ' + str(cpu_guess[0]) + ' ' + str(cpu_guess[1]))
+
+                # ( Check Board )
+                if p1_board[letters.index(cpu_guess[0])][int(cpu_guess[1])] == 1:
+                    print('( Player: HIT !!!! )')
+                else:
+                    print('( Player: Miss !!!! )')
+        # ( If CPU Goes First )
+        if first_list[2]:
+            print('P1 Ship Coordinates:\t' + str(p1_ship_coordinates))
+            print('CPU Ship Coordinates:\t' + str(cpu_ship_coordinates))
+            while player_1_ships > 0 or cpu_ships > 0:
+                # ( Generate CPU Guess )
+                cpu_rowg = random.randint(0, 9)
+                cpu_colg = random.randint(0, 9)
+                cpu_guess = [letters[cpu_rowg], cpu_colg]
+                print('\nCPU Entered Strike Coordinates: ' + str(cpu_guess[0]) + ' ' + str(cpu_guess[1]))
+
+                # ( Check Board )
+                if p1_board[cpu_guess[0]][int(cpu_guess[1])] == 1:
+                    print('( Player: HIT !!!! )')
+                else:
+                    print('( Player: Miss !!!! )')
+
+                # ( Player Enter Guess )
+                player_input = input('\nPlayer_1 Enter Strike Coordinates:\t')
+                pr = letters.index(player_input[0])
+                pc = player_input[2]
+                player_guess = [pr, pc]
+
+                # ( Check Board )
+                if cpu_board[player_guess[0]][int(player_guess[1])] == 1:
+                    print('( CPU: HIT !!!! )')
+                else:
+                    print('( Player: Miss !!!! )')
 
     print('GAME OVER !!!!')
-
-print()
-print('=================================================='*2)
+print('==================================================' * 2)
 # =========================================================================
