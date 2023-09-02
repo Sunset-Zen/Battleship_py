@@ -68,7 +68,7 @@ p1_board_display, p2_board_display, cpu_board_display = [[' ', ' ', ' ', ' ', ' 
                                                             [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
                                                             [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']]
 player1_f, player2_f, cpu_f = False, False, False
-player_1_health, player_2_health, player_3_health = 5, 5, 5
+player_1_health, player_2_health, cpu_health = 5, 5, 5
 game_start = True
 game_symbols = ['X', '-', '#']
 turn_array = ['Heads', 'Tails']
@@ -95,6 +95,7 @@ cpu_ships = [cpu_ship_coordinates[0],
              cpu_ship_coordinates[2],
              cpu_ship_coordinates[3],
              cpu_ship_coordinates[4]]
+
 
 # -> ( Game Functions )
 # ( Who goes first function ( Heads or Tails ) )
@@ -323,8 +324,13 @@ if single_player:
         if first_list[0]:
             print('P1 Ship Coordinates:\t' + str(p1_ship_coordinates))
             print('CPU Ship Coordinates:\t' + str(cpu_ship_coordinates))
-            while player_1_health > 0 or player_3_health > 0:
+            while player_1_health > 0 or cpu_health > 0:
                 # ( Debug )
+                # sunk_counter = 0
+
+                # if sunk_counter == 1:
+                #     cpu_health -= 1
+                #     sunk_counter = 0
 
                 # ( Player Enter Guess )
                 player_input = input('\nPlayer_1 Enter Strike Coordinates:\t')
@@ -336,39 +342,101 @@ if single_player:
                 if cpu_board[player_guess[0]][int(player_guess[1])] == 1:
                     cpu_board_display[player_guess[0]][int(player_guess[1])] = game_symbols[0]
                     cpu_board[player_guess[0]][int(player_guess[1])] = 0
+                    # cpu_health -= 1
                     # ( Compare )
                     i = 0
-                    print('')
+                    a = 5
+                    # print('')
                     for ship in cpu_ships:
-                        print(ships[i])
+                        temp_health = len(ship)
+                        if temp_health == 0:
+                            cpu_health -= 1
+                        # if empty_count == len(ship):
+                        #     print('\n(CPU) ' + str(ships[i]) + ' Sunken...\n')
+                        #     cpu_health -= 1
+                        # if len(ship) == 0:
+                        #     print('(CPU): ' + str(ships[i]) + ' Sunken...')
+                        # else:
+                        #     print('(CPU): ' + str(ships[i]))
+
                         for coordinate in ship:
+                            # if len(coordinate) == 0:
+                                # ship.remove(coordinate)
+                                # ship.pop(ship.index(coordinate))
                             if len(coordinate) > 0:
                                 if letters[player_guess[0]] == coordinate[0] and player_guess[1] == coordinate[1]:
                                     coordinate.pop(0)
                                     coordinate.pop(0)
-                            print(str(coordinate) + '\t', end='')
+                                    ship.remove([])
+                            # elif len(coordinate) == 0:
+                                # empty_count += 1
+                            # print(str(coordinate) + '\t', end='')
+                        # print('( spaces ): ' + str(len(ship)))
                         i += 1
-                        print()
+                    print('(CPU Health): ' + str(cpu_health))
 
                     print('')
                     board_display(p1_board_display)
                     print('\n( CPU : HIT !!!! )\n')
-                    print('(CPU) Aircraft Carrier:\t' + str(cpu_ships[0]))
-                    print('(CPU) Battleship:\t' + str(cpu_ships[1]))
-                    print('(CPU) Cruiser:\t' + str(cpu_ships[2]))
-                    print('(CPU) Submarine:\t' + str(cpu_ships[3]))
-                    print('(CPU) Destroyer:\t' + str(cpu_ships[4]))
+                    if len(cpu_ships[0]) == 0:
+                        print('(CPU) Aircraft Carrier:\tSunken...')
+                    else:
+                        print('(CPU) Aircraft Carrier:\tActive')
+                        # print('(CPU) Aircraft Carrier:\t' + str(cpu_ships[0]))
+                    if len(cpu_ships[1]) == 0:
+                        print('(CPU) Battleship:\t\tSunken...')
+                    else:
+                        print('(CPU) Battleship:\t\tActive')
+                        # print('(CPU) Battleship:\t' + str(cpu_ships[1]))
+                    if len(cpu_ships[2]) == 0:
+                        print('(CPU) Cruiser:\t\t\tSunken...')
+                    else:
+                        print('(CPU) Cruiser:\t\t\tActive')
+                        # print('(CPU) Cruiser:\t' + str(cpu_ships[2]))
+                    if len(cpu_ships[3]) == 0:
+                        print('(CPU) Submarine:\t\tSunken...')
+                    else:
+                        print('(CPU) Submarine:\t\tActive')
+                        # print('(CPU) Submarine:\t' + str(cpu_ships[3]))
+                    if len(cpu_ships[4]) == 0:
+                        print('(CPU) Destroyer:\t\tSunken...')
+                    else:
+                        print('(CPU) Destroyer:\t\tActive')
+                        # print('(CPU) Destroyer:\t' + str(cpu_ships[4]))
+                    print('(CPU Health): ' + str(cpu_health))
                 else:
                     cpu_board_display[player_guess[0]][int(player_guess[1])] = game_symbols[1]
 
                     print('')
                     board_display(p1_board_display)
                     print('\n( CPU : Miss !!!! )\n')
-                    print('(CPU) Aircraft Carrier:\t' + str(cpu_ships[0]))
-                    print('(CPU) Battleship:\t' + str(cpu_ships[1]))
-                    print('(CPU) Cruiser:\t' + str(cpu_ships[2]))
-                    print('(CPU) Submarine:\t' + str(cpu_ships[3]))
-                    print('(CPU) Destroyer:\t' + str(cpu_ships[4]))
+                    if len(cpu_ships[0]) == 0:
+                        print('(CPU) Aircraft Carrier:\tSunken...')
+                    else:
+                        # print('(CPU) Aircraft Carrier:\t' + str(cpu_ships[0]) )
+                        print('(CPU) Aircraft Carrier:\tActive')
+                    if len(cpu_ships[1]) == 0:
+                        print('(CPU) Battleship:\t\tSunken...')
+                    else:
+                        print('(CPU) Battleship:\t\tActive')
+                        # print('(CPU) Battleship:\t' + str(cpu_ships[1]))
+                    if len(cpu_ships[2]) == 0:
+                        print('(CPU) Cruiser:\t\t\tSunken...')
+                    else:
+                        print('(CPU) Cruiser:\t\t\tActive')
+                        # print('(CPU) Cruiser:\t' + str(cpu_ships[2]))
+                    if len(cpu_ships[3]) == 0:
+                        print('(CPU) Submarine:\t\tSunken...')
+                    else:
+                        print('(CPU) Submarine:\t\tActive')
+                        # print('(CPU) Submarine:\t' + str(cpu_ships[3]))
+                    if len(cpu_ships[4]) == 0:
+                        print('(CPU) Destroyer:\t\tSunken...')
+                    else:
+                        print('(CPU) Destroyer:\t\tActive')
+                        # print('(CPU) Destroyer:\t' + str(cpu_ships[4]))
+                    print('(CPU Health): ' + str(cpu_health))
+                # print('\n(cpu_health): ' + str(cpu_health))
 
                 # ( Generate CPU Guess )
                 cpu_rowg = random.randint(0, 9)
@@ -380,19 +448,38 @@ if single_player:
                 if p1_board[letters.index(cpu_guess[0])][int(cpu_guess[1])] == 1:
                     p1_board_display[letters.index(cpu_guess[0])][int(cpu_guess[1])] = game_symbols[0]
                     p1_board[letters.index(cpu_guess[0])][int(cpu_guess[1])] = 0
+                    player_1_health -= 1
                     # ( Compare )
                     i = 0
-                    print('')
+                    a = 5
+                    # print('')
                     for ship in p1_ships:
-                        print(ships[i])
+                        temp_health = len(ship)
+                        if temp_health == 0:
+                            player_1_health -= 1
+                        # if empty_count == len(ship):
+                        #     print('\n(P1) ' + str(ships[i]) + ' Sunken...\n')
+                        #     player_1_health -= 1
+                        # if len(ship) == 0:
+                        #     print('(P1): ' + str(ships[i]) + ' Sunken...')
+                        # else:
+                        #     print('(P1): ' + str(ships[i]))
                         for coordinate in ship:
+                            # if len(coordinate) == 0:
+                                # ship.remove(coordinate)
+                                # ship.pop(ship.index(coordinate))
                             if len(coordinate) > 0:
-                                if letters[player_guess[0]] == coordinate[0] and player_guess[1] == coordinate[1]:
+                                if str(cpu_guess[0]) == coordinate[0] and str(cpu_guess[1]) == coordinate[1]:
                                     coordinate.pop(0)
                                     coordinate.pop(0)
-                            print(str(coordinate) + '\t', end='')
+                                    ship.remove([])
+                                # elif len(coordinate) == 0:
+                                #     empty_count += 1
+                            # print(str(coordinate) + '\t', end='')
+                        # print('( spaces ): ' + str(len(ship)))
                         i += 1
-                        print()
+                    print('(Player Health): ' + str(player_1_health))
+                        # print()
                         # j_index = 0
                         # if ship[j_index][0] == cpu_guess[0] and ship[int(j_index)][1] == cpu_guess[1]:
                         #     print(ship.pop(j_index))
@@ -412,27 +499,61 @@ if single_player:
                     # print('')
                     # board_display(cpu_board_display)
                     print('\n( Player: HIT !!!! )\n')
-                    print('(P1) Aircraft Carrier:\t' + str(p1_ships[0]))
-                    print('(P1) Battleship:\t' + str(p1_ships[1]))
-                    print('(P1) Cruiser:\t' + str(p1_ships[2]))
-                    print('(P1) Submarine:\t' + str(p1_ships[3]))
-                    print('(P1) Destroyer:\t' + str(p1_ships[4]))
+                    if len(p1_ships[0]) == 0:
+                        print('(P1) Aircraft Carrier:\tSunken...')
+                    else:
+                        print('(P1) Aircraft Carrier:\t' + str(p1_ships[0]))
+                    if len(p1_ships[1]) == 0:
+                        print('(P1) Battleship:\t\tSunken...')
+                    else:
+                        print('(P1) Battleship:\t' + str(p1_ships[1]))
+                    if len(p1_ships[2]) == 0:
+                        print('(P1) Cruiser:\t\t\tSunken...')
+                    else:
+                        print('(P1) Cruiser:\t' + str(p1_ships[2]))
+                    if len(p1_ships[3]) == 0:
+                        print('(P1) Submarine:\t\tSunken...')
+                    else:
+                        print('(P1) Submarine:\t' + str(p1_ships[3]))
+                    if len(p1_ships[4]) == 0:
+                        print('(P1) Destroyer:\t\tSunken...')
+                    else:
+                        print('(P1) Destroyer:\t' + str(p1_ships[4]))
+                    print('(Player Health): ' + str(player_1_health))
                 else:
                     p1_board_display[letters.index(cpu_guess[0])][int(cpu_guess[1])] = game_symbols[1]
 
                     # print('')
                     # board_display(cpu_board_display)
                     print('\n( Player: Miss !!!! )\n')
-                    print('(P1) Aircraft Carrier:\t' + str(p1_ships[0]))
-                    print('(P1) Battleship:\t' + str(p1_ships[1]))
-                    print('(P1) Cruiser:\t' + str(p1_ships[2]))
-                    print('(P1) Submarine:\t' + str(p1_ships[3]))
-                    print('(P1) Destroyer:\t' + str(p1_ships[4]))
+                    if len(p1_ships[0]) == 0:
+                        print('(P1) Aircraft Carrier:\tSunken...')
+                    else:
+                        print('(P1) Aircraft Carrier:\t' + str(p1_ships[0]))
+                    if len(p1_ships[1]) == 0:
+                        print('(P1) Battleship:\t\tSunken...')
+                    else:
+                        print('(P1) Battleship:\t' + str(p1_ships[1]))
+                    if len(p1_ships[2]) == 0:
+                        print('(P1) Cruiser:\t\t\tSunken...')
+                    else:
+                        print('(P1) Cruiser:\t' + str(p1_ships[2]))
+                    if len(p1_ships[3]) == 0:
+                        print('(P1) Submarine:\t\tSunken...')
+                    else:
+                        print('(P1) Submarine:\t' + str(p1_ships[3]))
+                    if len(p1_ships[4]) == 0:
+                        print('(P1) Destroyer:\t\tSunken...')
+                    else:
+                        print('(P1) Destroyer:\t' + str(p1_ships[4]))
+                print('(Player Health): ' + str(player_1_health))
+                # print('\n(player_health): ' + str(player_1_health))
+
         # ( If CPU Goes First )
         if first_list[2]:
             print('P1 Ship Coordinates:\t' + str(p1_ship_coordinates))
             print('CPU Ship Coordinates:\t' + str(cpu_ship_coordinates))
-            while player_1_health > 0 or player_3_health > 0:
+            while player_1_health > 0 or cpu_health > 0:
                 # ( Generate CPU Guess )
                 cpu_rowg = random.randint(0, 9)
                 cpu_colg = random.randint(0, 9)
@@ -443,18 +564,40 @@ if single_player:
                 if p1_board[letters.index(cpu_guess[0])][int(cpu_guess[1])] == 1:
                     p1_board_display[letters.index(cpu_guess[0])][int(cpu_guess[1])] = game_symbols[0]
                     p1_board[letters.index(cpu_guess[0])][int(cpu_guess[1])] = 0
+                    player_1_health -= 1
                     # ( Compare )
                     i = 0
-                    print('')
+                    a = 5
+                    # print('')
                     for ship in p1_ships:
-                        print(ships[i])
+                        temp_health = len(ship)
+                        if temp_health == 0:
+                            player_1_health -= 1
+                        # empty_count = 0
+                        # if empty_count == len(ship):
+                        #     print('\n(P1) ' + str(ships[i]) + ' Sunken...\n')
+                        #     player_1_health -= 1
+                        # if len(ship) == 0:
+                        #     print('(CPU): ' + str(ships[i]) + ' Sunken...')
+                        # else:
+                        #     print('(CPU): ' + str(ships[i]))
+
                         for coordinate in ship:
-                            if str(cpu_guess[0]) == coordinate[0] and str(cpu_guess[1]) == coordinate[1]:
-                                coordinate.pop(0)
-                                coordinate.pop(0)
-                            print(str(coordinate) + '\t', end='')
+                            # if len(coordinate) == 0:
+                                # ship.remove(coordinate)
+                                # ship.pop(ship.index(coordinate))
+                            if len(coordinate) > 0:
+                                if str(cpu_guess[0]) == coordinate[0] and str(cpu_guess[1]) == coordinate[1]:
+                                    coordinate.pop(0)
+                                    coordinate.pop(0)
+                                    ship.remove([])
+                                # elif len(coordinate) == 0:
+                                #     empty_count +=
+                                # print(str(coordinate) + '\t', end='')
+                        # print('( spaces ): ' + str(len(ship)))
                         i += 1
-                        print()
+                    print('(Player Health): ' + str(player_1_health))
+                        # print()
                         # j_index = 0
                         # if ship[j_index][0] == cpu_guess[0] and ship[int(j_index)][1] == cpu_guess[1]:
                         #     print(ship.pop(j_index))
@@ -467,21 +610,60 @@ if single_player:
                         # i += 1
 
                     print('( Player: HIT !!!! )\n')
-                    print('(P1) Aircraft Carrier:\t' + str(p1_ships[0]))
-                    print('(P1) Battleship:\t' + str(p1_ships[1]))
-                    print('(P1) Cruiser:\t' + str(p1_ships[2]))
-                    print('(P1) Submarine:\t' + str(p1_ships[3]))
-                    print('(P1) Destroyer:\t' + str(p1_ships[4]))
+
+                    if len(p1_ships[0]) == 0:
+                        print('(P1) Aircraft Carrier:\tSunken...')
+                    else:
+                        print('(P1) Aircraft Carrier:\t' + str(p1_ships[0]))
+                    if len(p1_ships[1]) == 0:
+                        print('(P1) Battleship:\t\tSunken...')
+                    else:
+                        print('(P1) Battleship:\t' + str(p1_ships[1]))
+                    if len(p1_ships[2]) == 0:
+                        print('(P1) Cruiser:\t\t\tSunken...')
+                    else:
+                        print('(P1) Cruiser:\t' + str(p1_ships[2]))
+                    if len(p1_ships[3]) == 0:
+                        print('(P1) Submarine:\t\tSunken...')
+                    else:
+                        print('(P1) Submarine:\t' + str(p1_ships[3]))
+                    if len(p1_ships[4]) == 0:
+                        print('(P1) Destroyer:\t\tSunken...')
+                    else:
+                        print('(P1) Destroyer:\t' + str(p1_ships[4]))
+                    print('(Player Health): ' + str(player_1_health))
+                    # print('(P1) Battleship:\t' + str(p1_ships[1]))
+                    # print('(P1) Cruiser:\t' + str(p1_ships[2]))
+                    # print('(P1) Submarine:\t' + str(p1_ships[3]))
+                    # print('(P1) Destroyer:\t' + str(p1_ships[4]))
                 else:
                     p1_board_display[letters.index(cpu_guess[0])][int(cpu_guess[1])] = game_symbols[1]
                     # print('')
                     # board_display(cpu_board_display)
-                    print('\n( Player: Miss !!!! )\n')
-                    print('(P1) Aircraft Carrier:\t' + str(p1_ships[0]))
-                    print('(P1) Battleship:\t' + str(p1_ships[1]))
-                    print('(P1) Cruiser:\t' + str(p1_ships[2]))
-                    print('(P1) Submarine:\t' + str(p1_ships[3]))
-                    print('(P1) Destroyer:\t' + str(p1_ships[4]))
+                    print('( Player: MISS !!!! )\n')
+
+                    if len(p1_ships[0]) == 0:
+                        print('(P1) Aircraft Carrier:\tSunken...')
+                    else:
+                        print('(P1) Aircraft Carrier:\t' + str(p1_ships[0]))
+                    if len(p1_ships[1]) == 0:
+                        print('(P1) Battleship:\t\tSunken...')
+                    else:
+                        print('(P1) Battleship:\t' + str(p1_ships[1]))
+                    if len(p1_ships[2]) == 0:
+                        print('(P1) Cruiser:\t\t\tSunken...')
+                    else:
+                        print('(P1) Cruiser:\t' + str(p1_ships[2]))
+                    if len(p1_ships[3]) == 0:
+                        print('(P1) Submarine:\t\tSunken...')
+                    else:
+                        print('(P1) Submarine:\t' + str(p1_ships[3]))
+                    if len(p1_ships[4]) == 0:
+                        print('(P1) Destroyer:\t\tSunken...')
+                    else:
+                        print('(P1) Destroyer:\t' + str(p1_ships[4]))
+                    print('(Player Health): ' + str(player_1_health))
+                # print('\n(player_health): ' + str(player_1_health))
 
                 # ( Player Enter Guess )
                 player_input = input('\nPlayer_1 Enter Strike Coordinates:\t')
@@ -491,39 +673,100 @@ if single_player:
 
                 # ( Check Board )
                 if cpu_board[player_guess[0]][int(player_guess[1])] == 1:
+                    # remove health
+
                     cpu_board_display[player_guess[0]][int(player_guess[1])] = game_symbols[0]
-                    cpu_board[player_guess[0]][int(player_guess[1])] = 0
+                    cpu_board[player_guess[0]][int(player_guess[1])] = 1
+                    # cpu_health -= 1
                     # ( Compare )
                     i = 0
-                    print('')
+                    a = 5
+                    # print('')
                     for ship in cpu_ships:
-                        print(ships[i])
+                        temp_health = len(ship)
+                        if temp_health == 0:
+                            cpu_health -= 1
+                        # empty_count = 0
+                        # if empty_count == len(ship):
+                        #     cpu_health -= 1
+                        #     print('\n(CPU) ' + str(ships[i]) + ' Sunken...\n')
+                        # if len(ship) == 0:
+                        #     print('(CPU): ' + str(ships[i]) + ' Sunken...')
+                        # else:
+                        #     print('(CPU): ' + str(ships[i])
                         for coordinate in ship:
-                            if str(player_guess[0]) == coordinate[0] and str(player_guess[1]) == coordinate[1]:
-                                coordinate.pop(0)
-                                coordinate.pop(0)
-                            print(str(coordinate) + '\t', end='')
+                            # if len(coordinate) == 0:
+                                # ship.remove(coordinate)
+                                # ship.pop(ship.index(coordinate))
+                            if len(coordinate) > 0:
+                                if letters[player_guess[0]] == coordinate[0] and player_guess[1] == coordinate[1]:
+                                    coordinate.pop(0)
+                                    coordinate.pop(0)
+                                    ship.remove([])
+                                # elif len(coordinate) == 0:
+                                #     empty_count += 1
+                                # print(str(coordinate) + '\t', end='')
+                        # print('( spaces ): ' + str(len(ship)))
                         i += 1
-                        print()
+                        # print()
 
                     print('\n')
                     board_display(p1_board_display)
                     print('\n( CPU: HIT !!!! )\n')
-                    print('(CPU) Aircraft Carrier:\t' + str(cpu_ships[0]))
-                    print('(CPU) Battleship:\t' + str(cpu_ships[1]))
-                    print('(CPU) Cruiser:\t' + str(cpu_ships[2]))
-                    print('(CPU) Submarine:\t' + str(cpu_ships[3]))
-                    print('(CPU) Destroyer:\t' + str(cpu_ships[4]))
+
+                    if len(cpu_ships[0]) == 0:
+                        print('(CPU) Aircraft Carrier:\tSunken...')
+                    else:
+                        print('(CPU) Aircraft Carrier:\tActive')
+                        # print('(CPU) Aircraft Carrier:\t' + str(cpu_ships[0]))
+                    if len(cpu_ships[1]) == 0:
+                        print('(CPU) Battleship:\t\tSunken...')
+                    else:
+                        print('(CPU) Battleship:\t\tActive')
+                        # print('(CPU) Battleship:\t' + str(cpu_ships[1]))
+                    if len(cpu_ships[2]) == 0:
+                        print('(CPU) Cruiser:\t\t\tSunken...')
+                    else:
+                        print('(CPU) Cruiser:\t\t\tActive')
+                        # print('(CPU) Cruiser:\t' + str(cpu_ships[2]))
+                    if len(cpu_ships[3]) == 0:
+                        print('(CPU) Submarine:\t\tSunken...')
+                    else:
+                        print('(CPU) Submarine:\t\tActive')
+                        # print('(CPU) Submarine:\t' + str(cpu_ships[3]))
+                    if len(cpu_ships[4]) == 0:
+                        print('(CPU) Destroyer:\t\tSunken...')
+                    else:
+                        print('(CPU) Destroyer:\t\tActive')
+                        # print('(CPU) Destroyer:\t' + str(cpu_ships[4]))
+                    print('(CPU Health): ' + str(cpu_health))
                 else:
                     cpu_board_display[player_guess[0]][int(player_guess[1])] = game_symbols[1]
                     print('\n')
                     board_display(p1_board_display)
                     print('\n( CPU: Miss !!!! )\n')
-                    print('(CPU) Aircraft Carrier:\t' + str(cpu_ships[0]))
-                    print('(CPU) Battleship:\t' + str(cpu_ships[1]))
-                    print('(CPU) Cruiser:\t' + str(cpu_ships[2]))
-                    print('(CPU) Submarine:\t' + str(cpu_ships[3]))
-                    print('(CPU) Destroyer:\t' + str(cpu_ships[4]))
+                    if len(cpu_ships[0]) == 0:
+                        print('(CPU) Aircraft Carrier:\tSunken...')
+                    else:
+                        print('(CPU) Aircraft Carrier:\tActive')
+                    if len(cpu_ships[1]) == 0:
+                        print('(CPU) Battleship:\t\tSunken...')
+                    else:
+                        print('(CPU) Battleship:\t\tActive')
+                    if len(cpu_ships[2]) == 0:
+                        print('(CPU) Cruiser:\t\t\tSunken...')
+                    else:
+                        print('(CPU) Cruiser:\t\t\tActive')
+                    if len(cpu_ships[3]) == 0:
+                        print('(CPU) Submarine:\t\tSunken...')
+                    else:
+                        print('(CPU) Submarine:\t\tActive')
+                    if len(cpu_ships[4]) == 0:
+                        print('(CPU) Destroyer:\t\tSunken...')
+                    else:
+                        print('(CPU) Destroyer:\t\tActive')
+                    print('(CPU Health): ' + str(cpu_health))
+                # print('\n(cpu_health): ' + str(cpu_health))
 
     print('GAME OVER !!!!')
 print('==================================================' * 2)
